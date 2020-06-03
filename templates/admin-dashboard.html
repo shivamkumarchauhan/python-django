@@ -1,0 +1,87 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Admin Dashboard </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+
+        <form action="show-product-details">
+            {% csrf_token %}
+
+            <input type="submit" value="Show Product Details">
+        </form>
+
+        <br>
+        <br>
+
+        <h3> User Details </h3>
+        <table>
+            <thead>
+            <tr>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Email</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in allUserDetails %}
+            <tr>
+                <td>{{ user.first_name }}</td>
+                <td>{{ user.last_name }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    <form action="show-user/{{ user.id }}" method="POST">
+
+                        {% csrf_token %}
+                        <input type="hidden" value="{{ user.id }}">
+                        <input type="submit" value="Show User Details">
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <br>
+        <br>
+
+        <h3> All User Order History </h3>
+        <table>
+            <thead>
+            <tr>
+                <td>Product Name</td>
+                <td>Product Price</td>
+                <td>Product Quantity</td>
+                <td>Product Status</td>
+                <td>Order By</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for order in orderDetail %}
+            <tr>
+                <td>{{ order.product_name }}</td>
+                <td>{{ order.product_price }}</td>
+                <td>{{ order.product_quantity }}</td>
+                <td>{{ order.product_status }}</td>
+                <td>{{ order.order_by }}</td>
+                <td>
+                    <form method="POST" action="update-status">
+
+                        {% csrf_token %}
+                        <input type="submit" value="Change Status">
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <br>
+
+        <a href="{% url 'login' %}">Back</a>
+
+    </body>
+</html>

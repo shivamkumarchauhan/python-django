@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Confirm Order </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+
+        <h3> Product Details </h3>
+        <table>
+            <thead>
+            <tr>
+                <td>Product Name</td>
+                <td>Product Description</td>
+                <td>Product Price</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ productDetail.product_name }}</td>
+                <td>{{ productDetail.product_description }}</td>
+                <td>{{ productDetail.product_price }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <br>
+        <br>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <select name="product_quantity">
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+            </select>
+            <br>
+            <br>
+            <input type="hidden" name="order_by" value="{{ username }}">
+            <input type="hidden" name="product_name" value="{{ productDetail.product_name }}">
+            <input type="hidden" name="product_price" value="{{ productDetail.product_price }}">
+            <input type="hidden" name="product_description" value="{{ productDetail.product_description }}">
+            <input type="hidden" name="id" value="{{ productDetail.id }}">
+            <input type="hidden" name="product_status" value="Active">
+            <input type="submit" value="Confirm Order">
+        </form>
+
+    </body>
+</html>

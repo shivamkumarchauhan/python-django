@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>User Dashboard </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <table>
+            <thead>
+            <tr>
+                <td>Product Name</td>
+                <td>Product Description</td>
+                <td>Product Price</td>
+                <td>Stock</td>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for dest in dests %}
+            <tr>
+                <td>{{ dest.product_name }}<br></td>
+                <td>{{ dest.product_description }}</td>
+                <td>{{ dest.product_price }}</td>
+                <td>{{ dest.product_quantity }}</td>
+                <td>
+                    <a href="{% url 'place-order' dest.id %}">Place Order</a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <br>
+
+        <a href="{% url 'user-dashboard' %}">Back</a>
+    </body>
+</html>

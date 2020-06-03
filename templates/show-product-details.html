@@ -1,0 +1,62 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Product Details </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+
+        <form action="add" method="POST">
+            {% csrf_token %}
+
+            <input type="submit" value="Add Products">
+        </form>
+
+        <table>
+            <thead>
+            <tr>
+                <td>Product Name</td>
+                <td>Product Description</td>
+                <td>Product Price</td>
+                <td>Product Quantity</td>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for dest in dests %}
+            <tr>
+                <td>{{ dest.product_name }}<br></td>
+                <td>{{ dest.product_description }}</td>
+                <td>{{ dest.product_price }}</td>
+                <td>{{ dest.product_quantity }}</td>
+                <td>
+                    <form action="delete/{{ dest.id }}" method="POST">
+
+                        {% csrf_token %}
+                        <input type="hidden" value="{{ dest.id }}">
+                        <input type="submit" value="Delete Product">
+                    </form>
+                </td>
+                <td>
+                    <a href="{% url 'update' dest.id %}">Update Order</a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <br>
+
+        <br>
+        <a href="{% url 'admin-dashboard' %}">Back</a>
+
+        <!-- <div>
+            {% for message in messages %}
+                <h3>{{messages}}</h3>
+                {% endfor %}
+        </div> -->
+    </body>
+</html>

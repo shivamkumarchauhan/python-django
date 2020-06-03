@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>User Dashboard </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+
+        <form action="show-product">
+            <input type="submit" value="Show Available Products">
+        </form>
+
+        <br>
+        <br>
+
+        <form action="order-history">
+            <input type="submit" value="Order History">
+        </form>
+
+        <br>
+
+        <a href="{% url 'login' %}">Back</a>
+    </body>
+</html>

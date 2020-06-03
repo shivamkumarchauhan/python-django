@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Order History Dashboard </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+
+        <h3> Order History </h3>
+        <table>
+            <thead>
+            <tr>
+                <td>Product Name</td>
+                <td>Product Price</td>
+                <td>Product Quantity</td>
+                <td>Product Status</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for order in orderDetail %}
+            <tr>
+                <td>{{ order.product_name }}</td>
+                <td>{{ order.product_price }}</td>
+                <td>{{ order.product_quantity }}</td>
+                <td>{{ order.product_status }}</td>
+                <td>{{ order.order_by }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <a href="{% url 'user-dashboard' %}">Back</a>
+
+    </body>
+</html>
