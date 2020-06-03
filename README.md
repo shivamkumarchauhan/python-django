@@ -1,7 +1,7 @@
 # python-django
 # In this repository i created an order management system using python and django
 
-# To Use this project run following command, use commant prompt
+# To Use this project run following command, use command prompt
 
 pip install virtualenvwrapper-win
 
